@@ -4,7 +4,6 @@ Imesh Nimsitha
 2025/04/06
 """
 
-import argparse
 import os
 import pickle
 import pandas as pd
@@ -134,33 +133,23 @@ def test_model(csv_path, model_path, output_dir='src/results'):
 
 # MAIN
 def main():
-    parser = argparse.ArgumentParser(
-        description="SVM Classifier for Music Genre/Lyric Classification"
-    )
-    parser.add_argument("csv_path", type=str, nargs='?', default="src/data/source/train.csv", 
-                        help="Path to the CSV file containing the dataset")
-    parser.add_argument("--test_size", type=float, default=0.2, 
-                        help="Fraction of data to use as the test set (default: 0.2)")
-    parser.add_argument("--random_state", type=int, default=42, 
-                        help="Random state for reproducibility (default: 42)")
-    parser.add_argument("--model_path", type=str, default="src/models/svm.pkl", 
-                        help="Path to save/load the model")
-    parser.add_argument("--output_dir", type=str, default="src/results", 
-                        help="Directory to save prediction results")
-    parser.add_argument("--mode", choices=['train', 'test'], default='train', 
-                        help="Mode: train or test")
-    
-    args = parser.parse_args()
+    train_csv_path = "src/data/source/train.csv"
+    test_csv_path = "src/data/target/test.csv"
+    model_path = "src/models/svm.pkl"
+    output_dir = "src/results"
+    test_size = 0.2
+    random_state = 42
     
     try:
-        if args.mode == 'train':
-            train_model(args.csv_path, args.test_size, args.random_state, args.model_path)
-        else:  # test mode
-            if not os.path.exists(args.model_path):
-                print(f"Error: Model file not found at {args.model_path}")
-                print("Please train the model first.")
-                return
-            test_model(args.csv_path, args.model_path, args.output_dir)
+        # train the model
+        print("Training SVM model...")
+        train_model(train_csv_path, test_size, random_state, model_path)
+        
+        # test the model
+        print("Testing model on new data...")
+        test_model(test_csv_path, model_path, output_dir)
+        print("Done! Model saved to", model_path)
+        
     except Exception as e:
         print(f"Error: {e}")
 
