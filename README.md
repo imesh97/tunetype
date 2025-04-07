@@ -170,6 +170,6 @@ The evaluation script generates:
 
 ## Notes
 
-The BERT model is not in the `src/models/` folder due to file size constraints; it would have to be retrained.
+The BERT model's `tf_model.h5` file is not in the `src/models/` folder due to file size constraints; it would have to be retrained.
 
 The original dataset can be found [here](https://www.kaggle.com/datasets/sshikamaru/music-genre-classification/).
