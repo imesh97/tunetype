@@ -56,14 +56,15 @@ pip install -r requirements.txt
    python src/mnb.py
    ```
 
-This trains the model on training data and saves predictions to `src/results/mnb_predictions.csv`
+   This trains the model on training data and saves predictions to `src/results/mnb_predictions.csv`
 
 2. **Generate visualizations**:
+
    ```bash
    python src/visualize_mnb.py
    ```
 
-Creates visualizations in the `plots/` directory with the prefix 'mnb\_'.
+   Creates visualizations in the `plots/` directory with the prefix 'mnb\_'.
 
 ### Support Vector Machine
 
@@ -73,29 +74,33 @@ Creates visualizations in the `plots/` directory with the prefix 'mnb\_'.
    python src/svm.py
    ```
 
-This trains an SVM classifier, saves the model to `src/models/svm.pkl`, and predictions to `src/results/svm_predictions.csv`
+   This trains an SVM classifier, saves the model to `src/models/svm.pkl`, and predictions to `src/results/svm_predictions.csv`
 
 2. **Generate visualizations**:
+
    ```bash
    python src/visualize_svm.py
    ```
+
    Creates visualizations in the `plots/` directory with the prefix 'svm\_'.
 
 ### Finetuned BERT
 
 1. **Train and predict**:
+
    ```bash
    python src/bert.py
    ```
 
-This fine-tunes a BERT model on the training data and saves predictions to `src/results/bert_predictions.csv`
+   This fine-tunes a BERT model on the training data and saves predictions to `src/results/bert_predictions.csv`
 
 2. **Generate visualizations**:
+
    ```bash
    python src/visualize_bert.py
    ```
 
-Creates visualizations in the `plots/` directory with the prefix 'bert\_'.
+   Creates visualizations in the `plots/` directory with the prefix 'bert\_'.
 
 ## Model Evaluation
 
@@ -170,6 +175,6 @@ The evaluation script generates:
 
 ## Notes
 
-The BERT model's `tf_model.h5` file is not in the `src/models/` folder due to file size constraints; it would have to be retrained.
+The BERT model's `tf_model.h5` file is not in the `src/models/bert_fine_tuned` folder due to file size constraints. The model would have to be retrained.
 
 The original dataset can be found [here](https://www.kaggle.com/datasets/sshikamaru/music-genre-classification/).
