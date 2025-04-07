@@ -6,6 +6,8 @@ A machine learning system for classifying music lyrics by genre (Rap/Hip-Hop vs 
 2. Support Vector Machine (SVM)
 3. Bidirectional Encoder Representations from Transformers (Finetuned BERT)
 
+The project report can be found [here](https://github.com/imesh97/tunetype/blob/main/report.pdf).
+
 ## Setup
 
 ### Requirements
@@ -155,7 +157,7 @@ The evaluation script generates:
 │   │       ├── sample.csv       # Ground truth for test data
 │   │       └── test.csv         # Test data (lyrics only)
 │   ├── models/
-│   │   ├── bert_finetuned/      # BERT model files
+│   │   ├── bert_fine_tuned/     # BERT model files
 │   │   └── svm.pkl              # Saved SVM model
 │   ├── results/
 │   │   ├── bert_predictions.csv # BERT predictions
@@ -165,9 +167,9 @@ The evaluation script generates:
 │   ├── eval.py                  # Model evaluation script
 │   ├── mnb.py                   # MNB implementation
 │   ├── svm.py                   # SVM implementation
+│   ├── visualize_bert.py        # Visualization for BERT results
 │   ├── visualize_mnb.py         # Visualization for MNB results
 │   └── visualize_svm.py         # Visualization for SVM results
-│   └── visualize_bert.py        # Visualization for BERT results
 ├── .gitignore                   # Git ignore file
 ├── README.md                    # Project documentation
 └── requirements.txt             # Project dependencies
@@ -177,6 +179,4 @@ The evaluation script generates:
 
 The BERT model's `tf_model.h5` file is not in the `src/models/bert_fine_tuned` folder due to file size constraints. The model would have to be retrained.
 
-The original dataset can be found [here](https://www.kaggle.com/datasets/sshikamaru/music-genre-classification/).
-
-The project report can be found [here](https://github.com/imesh97/tunetype/blob/main/report.pdf).
+The original dataset can be found [here](https://www.kaggle.com/datasets/sshikamaru/music-genre-classification/). The dataset is split into 80% training (source domain) and 20% test (target domain).
