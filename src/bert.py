@@ -11,7 +11,7 @@ import pickle
 MODEL_NAME = 'bert-base-uncased' 
 MAX_LENGTH = 128 
 BATCH_SIZE = 16 
-EPOCHS = 3 
+EPOCHS = 3
 LEARNING_RATE = 5e-5 
 
 TRAIN_DATA_PATH = 'src/data/source/train.csv'
