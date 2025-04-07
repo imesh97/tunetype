@@ -30,4 +30,61 @@ The classifier uses:
 - CountVectorizer with English stop words removal and unigram/bigram features
 - Multinomial Naive Bayes algorithm
 
-This implementation is well-suited for text classification tasks like lyrics categorization. 
+This implementation is well-suited for text classification tasks like lyrics categorization.
+
+## Visualizations and Analysis
+
+To generate visualizations and analyze model performance, run:
+```
+python src/visualize_model.py
+```
+
+### Analysis of Results
+
+The model's performance can be evaluated through several visualizations stored in the `plots/` directory:
+
+#### Class Distribution
+![Class Distribution](plots/class_distribution.png)
+
+The class distribution visualization shows the balance between the two genres (Rap/Hip-Hop and Pop) in our training data. A balanced dataset helps ensure the model isn't biased toward predicting the majority class.
+
+#### Confusion Matrix
+![Confusion Matrix](plots/confusion_matrix.png)
+
+The confusion matrix shows how well our model classifies each genre:
+- The diagonal elements represent correctly classified instances
+- Off-diagonal elements represent misclassifications
+- This helps us understand if the model performs better for one genre over the other
+
+#### ROC Curve
+![ROC Curve](plots/roc_curve.png)
+
+The ROC (Receiver Operating Characteristic) curve plots the true positive rate against the false positive rate at various classification thresholds. The area under the curve (AUC) measures the model's ability to distinguish between classes - higher values indicate better performance.
+
+#### Top Features
+![Top Features for Pop](plots/top_features_pop.png)
+![Top Features for Rap/Hip-Hop](plots/top_features_rap_hip-hop.png)
+
+These visualizations show the most important features (words or phrases) the model uses to classify each genre. The Naive Bayes classifier assigns higher log probabilities to words that are more distinctive for a particular genre:
+
+- **Pop lyrics** tend to feature words related to love, relationships, and emotion
+- **Rap/Hip-Hop lyrics** typically contain more references to specific cultural elements and contexts
+
+#### Precision, Recall, and F1-Score
+![Precision, Recall, and F1-Score](plots/precision_recall_f1.png)
+
+This chart breaks down the model's performance for each class across three key metrics:
+- **Precision**: How many of the predicted instances of a class are correct
+- **Recall**: How many actual instances of a class are correctly identified
+- **F1-Score**: The harmonic mean of precision and recall
+
+#### Overall Accuracy
+![Accuracy](plots/accuracy.png)
+
+The overall accuracy represents the percentage of correctly classified instances across all test data.
+
+### Conclusions
+
+The Multinomial Naive Bayes classifier demonstrates effective performance in distinguishing between Pop and Rap/Hip-Hop lyrics. The model leverages distinctive vocabulary patterns in each genre to make accurate predictions. The visualizations reveal that certain words and phrases serve as strong indicators for genre classification.
+
+While the model performs well, there are still some misclassifications, particularly when lyrics contain vocabulary common to both genres. Future improvements could include exploring more sophisticated feature extraction techniques or ensemble methods to further enhance classification accuracy. 
