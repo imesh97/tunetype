@@ -83,8 +83,37 @@ This chart breaks down the model's performance for each class across three key m
 
 The overall accuracy represents the percentage of correctly classified instances across all test data.
 
+#### Learning Curves
+![Learning Curves](plots/learning_curves.png)
+
+Learning curves show how the model's performance changes as the amount of training data increases:
+- The red line shows training score - how well the model learns from the data it's trained on
+- The green line shows cross-validation score - how well the model generalizes to new data
+- Ideally, as more training data is added, these lines should converge at a high accuracy level
+- The gap between the lines indicates whether the model would benefit from more training data
+
+#### Feature Correlation Matrix
+![Feature Correlation Matrix](plots/feature_correlation.png)
+
+This heatmap shows how the top features (words) from both genres correlate with each other:
+- Positive correlations (red) indicate words that frequently appear together
+- Negative correlations (blue) indicate words that rarely appear together
+- This visualization helps identify patterns in how certain words co-occur within and across genres
+- Strong correlations can help understand the linguistic patterns characteristic of each genre
+
+#### Cross-Validation Performance
+![Cross-Validation Performance](plots/cross_validation.png)
+
+Cross-validation evaluates the model's stability and consistency across different subsets of the data:
+- Each bar represents the model's accuracy on a different fold of the data
+- The red line indicates the mean accuracy across all folds
+- Consistent scores across folds suggest the model is stable and not overly sensitive to particular data points
+- Large variations between folds could indicate that the model's performance depends heavily on which examples it sees during training
+
 ### Conclusions
 
 The Multinomial Naive Bayes classifier demonstrates effective performance in distinguishing between Pop and Rap/Hip-Hop lyrics. The model leverages distinctive vocabulary patterns in each genre to make accurate predictions. The visualizations reveal that certain words and phrases serve as strong indicators for genre classification.
 
-While the model performs well, there are still some misclassifications, particularly when lyrics contain vocabulary common to both genres. Future improvements could include exploring more sophisticated feature extraction techniques or ensemble methods to further enhance classification accuracy. 
+While the model performs well, there are still some misclassifications, particularly when lyrics contain vocabulary common to both genres. The learning curves suggest that additional training data might improve performance, and the cross-validation results demonstrate that the model maintains consistent accuracy across different data subsets. The feature correlation analysis provides insights into how certain words tend to co-occur in lyrics, offering linguistic patterns that distinguish between genres.
+
+Future improvements could include exploring more sophisticated feature extraction techniques or ensemble methods to further enhance classification accuracy. 
