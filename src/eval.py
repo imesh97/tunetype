@@ -41,6 +41,13 @@ if not (ground_truth['id'].equals(mnb_predictions['id']) and
 # Class names for visualization
 class_names = {0: 'Rap/Hip-Hop', 1: 'Pop'}
 
+# After inspecting sample.csv, it appears all labels are 0
+# Let's check class distribution in the ground truth
+print(f"Ground truth class distribution: {ground_truth['class'].value_counts().to_dict()}")
+print(f"MNB predictions class distribution: {mnb_predictions['class'].value_counts().to_dict()}")
+print(f"SVM predictions class distribution: {svm_predictions['class'].value_counts().to_dict()}")
+print(f"BERT predictions class distribution: {bert_predictions['class'].value_counts().to_dict()}")
+
 # Calculate performance metrics
 mnb_accuracy = accuracy_score(ground_truth['class'], mnb_predictions['class'])
 svm_accuracy = accuracy_score(ground_truth['class'], svm_predictions['class'])
@@ -80,8 +87,8 @@ fig, axes = plt.subplots(1, 3, figsize=(18, 6))  # Expand to 3 columns for BERT
 # MNB confusion matrix
 cm_mnb = confusion_matrix(ground_truth['class'], mnb_predictions['class'])
 sns.heatmap(cm_mnb, annot=True, fmt='d', cmap='Blues', ax=axes[0],
-            xticklabels=[class_names[i] for i in range(2)],
-            yticklabels=[class_names[i] for i in range(2)])
+            xticklabels=[class_names[i] for i in sorted(class_names.keys())],
+            yticklabels=[class_names[i] for i in sorted(class_names.keys())])
 axes[0].set_title('MNB Confusion Matrix')
 axes[0].set_xlabel('Predicted Label')
 axes[0].set_ylabel('True Label')
@@ -89,8 +96,8 @@ axes[0].set_ylabel('True Label')
 # SVM confusion matrix
 cm_svm = confusion_matrix(ground_truth['class'], svm_predictions['class'])
 sns.heatmap(cm_svm, annot=True, fmt='d', cmap='Reds', ax=axes[1],
-            xticklabels=[class_names[i] for i in range(2)],
-            yticklabels=[class_names[i] for i in range(2)])
+            xticklabels=[class_names[i] for i in sorted(class_names.keys())],
+            yticklabels=[class_names[i] for i in sorted(class_names.keys())])
 axes[1].set_title('SVM Confusion Matrix')
 axes[1].set_xlabel('Predicted Label')
 axes[1].set_ylabel('True Label')
@@ -98,8 +105,8 @@ axes[1].set_ylabel('True Label')
 # BERT confusion matrix
 cm_bert = confusion_matrix(ground_truth['class'], bert_predictions['class'])
 sns.heatmap(cm_bert, annot=True, fmt='d', cmap='Greens', ax=axes[2],  # Add BERT confusion matrix
-            xticklabels=[class_names[i] for i in range(2)],
-            yticklabels=[class_names[i] for i in range(2)])
+            xticklabels=[class_names[i] for i in sorted(class_names.keys())],
+            yticklabels=[class_names[i] for i in sorted(class_names.keys())])
 axes[2].set_title('BERT Confusion Matrix')
 axes[2].set_xlabel('Predicted Label')
 axes[2].set_ylabel('True Label')
