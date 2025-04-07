@@ -23,21 +23,22 @@ A machine learning system for classifying music lyrics by genre (Rap/Hip-Hop vs 
 
 1. **Create and activate virtual environment**:
 
-   ```bash
-   # Create virtual environment
-   python -m venv venv
+```bash
+# Create virtual environment
+python -m venv venv
 
-   # Activate on Windows
-   venv\Scripts\activate
+# Activate on Windows
+venv\Scripts\activate
 
-   # Activate on macOS/Linux
-   source venv/bin/activate
-   ```
+# Activate on macOS/Linux
+source venv/bin/activate
+```
 
 2. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Data Format
 
@@ -55,13 +56,14 @@ A machine learning system for classifying music lyrics by genre (Rap/Hip-Hop vs 
    python src/mnb.py
    ```
 
-   This trains the model on training data and saves predictions to `src/results/mnb_predictions.csv`
+This trains the model on training data and saves predictions to `src/results/mnb_predictions.csv`
 
 2. **Generate visualizations**:
    ```bash
    python src/visualize_mnb.py
    ```
-   Creates visualizations in the `plots/` directory with the prefix 'mnb\_'.
+
+Creates visualizations in the `plots/` directory with the prefix 'mnb\_'.
 
 ### Support Vector Machine
 
@@ -71,7 +73,7 @@ A machine learning system for classifying music lyrics by genre (Rap/Hip-Hop vs 
    python src/svm.py
    ```
 
-   This trains an SVM classifier, saves the model to `src/models/svm.pkl`, and predictions to `src/results/svm_predictions.csv`
+This trains an SVM classifier, saves the model to `src/models/svm.pkl`, and predictions to `src/results/svm_predictions.csv`
 
 2. **Generate visualizations**:
    ```bash
@@ -85,12 +87,15 @@ A machine learning system for classifying music lyrics by genre (Rap/Hip-Hop vs 
    ```bash
    python src/bert.py
    ```
-   This fine-tunes a BERT model on the training data and saves predictions to `src/results/bert_predictions.csv`
+
+This fine-tunes a BERT model on the training data and saves predictions to `src/results/bert_predictions.csv`
+
 2. **Generate visualizations**:
    ```bash
    python src/visualize_bert.py
    ```
-   Creates visualizations in the `plots/` directory with the prefix 'bert\_'.
+
+Creates visualizations in the `plots/` directory with the prefix 'bert\_'.
 
 ## Model Evaluation
 
@@ -108,9 +113,9 @@ This will:
 
 ## Visualizations
 
-### Individual Model Visualizations
+### Model Visualizations
 
-MNB and SVM visualization scripts generate:
+The visualization scripts generate:
 
 - Class distribution
 - Confusion matrix
@@ -157,6 +162,7 @@ The evaluation script generates:
 │   ├── svm.py                   # SVM implementation
 │   ├── visualize_mnb.py         # Visualization for MNB results
 │   └── visualize_svm.py         # Visualization for SVM results
+│   └── visualize_bert.py         # Visualization for BERT results
 ├── .gitignore                   # Git ignore file
 ├── README.md                    # Project documentation
 └── requirements.txt             # Project dependencies
@@ -165,3 +171,5 @@ The evaluation script generates:
 ## Notes
 
 The BERT model is not in the `src/models/` folder due to file size constraints; it would have to be retrained.
+
+The original dataset can be found [here](https://www.kaggle.com/datasets/sshikamaru/music-genre-classification/).
