@@ -64,12 +64,12 @@ def train_model(csv_path, test_size=0.2, random_state=42, model_path=None):
     )
     
     # vectorize with TF-IDF
-    vectorizer = TfidfVectorizer(stop_words='english', min_df=2, max_df=0.95, ngram_range=(1, 2))
+    vectorizer = TfidfVectorizer(stop_words='english', min_df=2, max_df=0.95, ngram_range=(1, 3))
     X_train_tfidf = vectorizer.fit_transform(X_train)
     X_val_tfidf = vectorizer.transform(X_val)
     
     # initialize and train SVM
-    svm = LinearSVC(C=1.0, class_weight='balanced')
+    svm = LinearSVC(C=5.0, class_weight='balanced')
     svm.fit(X_train_tfidf, y_train)
     
     # validate model
