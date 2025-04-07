@@ -167,7 +167,7 @@ The evaluation script generates:
 │   ├── svm.py                   # SVM implementation
 │   ├── visualize_mnb.py         # Visualization for MNB results
 │   └── visualize_svm.py         # Visualization for SVM results
-│   └── visualize_bert.py         # Visualization for BERT results
+│   └── visualize_bert.py        # Visualization for BERT results
 ├── .gitignore                   # Git ignore file
 ├── README.md                    # Project documentation
 └── requirements.txt             # Project dependencies
@@ -178,3 +178,5 @@ The evaluation script generates:
 The BERT model's `tf_model.h5` file is not in the `src/models/bert_fine_tuned` folder due to file size constraints. The model would have to be retrained.
 
 The original dataset can be found [here](https://www.kaggle.com/datasets/sshikamaru/music-genre-classification/).
+
+The project report can be found [here](https://github.com/imesh97/tunetype/blob/main/report.pdf).
