@@ -27,8 +27,13 @@ This will:
 
 The classifier uses:
 - Text cleaning (removing special characters, converting to lowercase)
-- CountVectorizer with English stop words removal and unigram/bigram features
+- CountVectorizer with English stop words removal and unigram features only
 - Multinomial Naive Bayes algorithm
+
+This implementation specifically uses only unigrams (single words) rather than including bigrams. This design choice ensures that repeated words (like "yeah yeah") are treated as separate occurrences of the same word rather than as a distinct phrase. This approach:
+1. Simplifies the feature space
+2. Avoids potential issues with sparse or overfit features
+3. Makes visualization and interpretation more straightforward
 
 This implementation is well-suited for text classification tasks like lyrics categorization.
 
@@ -95,11 +100,12 @@ Learning curves show how the model's performance changes as the amount of traini
 #### Feature Correlation Matrix
 ![Feature Correlation Matrix](plots/feature_correlation.png)
 
-This heatmap shows how the top features (words) from both genres correlate with each other:
+This heatmap shows how the top unigram features (single words) from both genres correlate with each other:
 - Positive correlations (red) indicate words that frequently appear together
 - Negative correlations (blue) indicate words that rarely appear together
 - This visualization helps identify patterns in how certain words co-occur within and across genres
 - Strong correlations can help understand the linguistic patterns characteristic of each genre
+- Using only unigrams ensures that repetitive phrases (e.g., "yeah yeah") are treated as multiple occurrences of the same word rather than as a specialized bigram feature
 
 #### Cross-Validation Performance
 ![Cross-Validation Performance](plots/cross_validation.png)
@@ -112,7 +118,9 @@ Cross-validation evaluates the model's stability and consistency across differen
 
 ### Conclusions
 
-The Multinomial Naive Bayes classifier demonstrates effective performance in distinguishing between Pop and Rap/Hip-Hop lyrics. The model leverages distinctive vocabulary patterns in each genre to make accurate predictions. The visualizations reveal that certain words and phrases serve as strong indicators for genre classification.
+The Multinomial Naive Bayes classifier demonstrates effective performance in distinguishing between Pop and Rap/Hip-Hop lyrics. The model leverages distinctive vocabulary patterns in each genre to make accurate predictions. The visualizations reveal that certain words serve as strong indicators for genre classification.
+
+The unigrams-only approach provides a cleaner feature space for analysis and ensures that repeated words are treated consistently. This is particularly important for lyrics, where word repetition is a common stylistic element that should be captured as emphasis on a single word rather than as a unique phrase.
 
 While the model performs well, there are still some misclassifications, particularly when lyrics contain vocabulary common to both genres. The learning curves suggest that additional training data might improve performance, and the cross-validation results demonstrate that the model maintains consistent accuracy across different data subsets. The feature correlation analysis provides insights into how certain words tend to co-occur in lyrics, offering linguistic patterns that distinguish between genres.
 
