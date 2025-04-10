@@ -6,7 +6,9 @@ A machine learning system for classifying music lyrics by genre (Rap/Hip-Hop vs 
 2. Support Vector Machine (SVM)
 3. Bidirectional Encoder Representations from Transformers (Finetuned BERT)
 
-The project report can be found [here](https://github.com/imesh97/tunetype/blob/main/report.pdf).
+The project report can be found [here](https://github.com/imesh97/tunetype/blob/main/report.pdf). 
+
+**Authors:** [Imesh Nimsitha](https://github.com/imesh97), [Gurshawn Lehal](https://github.com/shawn10067), [Adam Wilson](https://github.com/adamwils32)
 
 ## Setup
 
